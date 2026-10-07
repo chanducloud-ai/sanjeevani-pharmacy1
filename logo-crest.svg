@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="crestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00A86B" />
+      <stop offset="50%" stop-color="#00897B" />
+      <stop offset="100%" stop-color="#0F766E" />
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#00897B" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Shield Backing -->
+  <path d="M50 6 C76 6 88 18 88 44 C88 68 66 86 50 94 C34 86 12 68 12 44 C12 18 24 6 50 6 Z" fill="url(#crestGrad)" filter="url(#glow)"/>
+  <!-- Inner Rim -->
+  <path d="M50 11 C72 11 83 21 83 44 C83 65 64 81 50 88 C36 81 17 65 17 44 C17 21 28 11 50 11 Z" stroke="#E6FFFA" stroke-width="2" stroke-opacity="0.4" fill="none"/>
+  <!-- Pure White Medical Cross -->
+  <rect x="44" y="26" width="12" height="38" rx="4" fill="#FFFFFF"/>
+  <rect x="31" y="39" width="38" height="12" rx="4" fill="#FFFFFF"/>
+  <!-- Vibrant Wellness Leaf Overlay -->
+  <path d="M50 36 C58 24 74 24 76 38 C76 52 60 58 50 54 C50 48 50 42 50 36 Z" fill="url(#leafGrad)" opacity="0.95"/>
+  <!-- Center Glow Point -->
+  <circle cx="50" cy="45" r="3.5" fill="#0D9488"/>
+  <circle cx="50" cy="45" r="1.5" fill="#FFFFFF"/>
+</svg>

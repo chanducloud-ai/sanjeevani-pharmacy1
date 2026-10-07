@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanjeevani Pharmacy | 100% Genuine Medicines, 2-Hour Express Delivery</title>
+  <meta name="description" content="Order authentic prescription medicines, chronic care refills, diabetes care, pain relief, baby care, and diagnostic healthcare devices with 2-hour express delivery." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-crest.svg" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pharmacy.css" />
+</head>
+<body>
+
+  <!-- ======================================================================
+       PROMINENT PROMOTIONAL & EXPRESS ANNOUNCEMENT BAR
+       ====================================================================== -->
+  <aside class="promo-top-ribbon" role="region" aria-label="Announcement">
+    <div class="container promo-content-row">
+      <div class="promo-badge-group">
+        <span class="pulse-dot"></span>
+        <span>Special Sanjeevani Offers:</span>
+        <span class="promo-deal">🎉 25% OFF 1st Order (&gt;₹100) • 🪙 Cashback Coins (50 coins=₹0.50) • 🚚 FREE Delivery 1st 3 Orders &amp; &le; 5 km • ⚡ 5% OFF &gt;₹499 • ⏰ 15% OFF Happy Hour (9:30-11:30 AM)</span>
+      </div>
+      <div class="promo-links-group">
+        <span>⚡ 2-Hour Express Delivery</span>
+        <a href="#prescription" class="promo-link">Upload Doctor's Slip</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       PRIMARY NAVIGATION HEADER (DESKTOP & LAPTOP)
+       ====================================================================== -->
+  <header class="ecommerce-header" id="siteHeader">
+    <div class="container header-primary-row">
+      <!-- Brand Identity -->
+      <a href="#home" class="brand-identity" aria-label="Sanjeevani Pharmacy Home">
+        <div class="brand-crest-wrapper">
+          <img src="assets/icons/logo-crest.svg" alt="Sanjeevani Medical Crest" class="brand-crest" />
+        </div>
+        <div class="brand-typography">
+          <span class="brand-name">SANJEEVANI <span class="brand-name-light">PHARMACY</span></span>
+          <span class="brand-origin">100% Genuine Healthcare • Your Trusted Pharmacy • Estd. 2010</span>
+        </div>
+      </a>
+
+      <!-- Instant Live Search Bar -->
+      <div class="header-search-container">
+        <form class="search-form-wrap" onsubmit="event.preventDefault(); executeHeaderSearch();">
+          <input 
+            type="text" 
+            id="globalSearchInput" 
+            class="header-search-input" 
+            placeholder="Search medicines, salt names, diabetes, pain relief, baby care..." 
+            autocomplete="off"
+            aria-label="Search medicines"
+          />
+          <button type="submit" class="header-search-btn" aria-label="Submit search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+        <div class="search-live-dropdown" id="searchLiveDropdown" style="display: none;"></div>
+      </div>
+
+      <!-- Action Buttons: Upload Rx, Account, Wishlist, Cart -->
+      <div class="header-user-actions">
+        <!-- Quick Rx Upload Button -->
+        <button class="btn-rx-quick" onclick="openRxModal()" title="Upload Doctor Prescription">
+          <span style="font-size: 1.1rem;">📄</span>
+          <span>Upload Rx</span>
+        </button>
+
+        <!-- Health Coins Widget -->
+        <button class="user-action-btn coins-action-btn" id="headerCoinsBtn" title="Health Coins Rewards" onclick="cartManager.showToast('🪙 Health Coins Balance! Redeem at checkout to save money on your order.')">
+          <span class="action-icon-circle">🪙</span>
+          <div class="cart-btn-text">
+            <span class="action-btn-label">Coins</span>
+            <span class="coins-btn-amount header-coins-total" style="color: #D97706; font-weight: 700;">100</span>
+          </div>
+        </button>
+
+        <!-- Account / Patient Login -->
+        <button class="user-action-btn" id="accountBtn" title="Patient Account" onclick="openLoginModal()">
+          <span class="action-icon-circle">👤</span>
+          <span class="action-btn-label">Account</span>
+        </button>
+
+        <!-- Wishlist / Saved Medicines -->
+        <a href="#catalog" class="user-action-btn" id="wishlistBtn" title="Saved Medicines" onclick="cartManager.showToast('Wishlist items highlighted in catalog')">
+          <span class="action-icon-circle">
+            ❤️
+            <span class="action-badge wishlist-count-badge" style="display: none;">0</span>
+          </span>
+          <span class="action-btn-label">Saved</span>
+        </a>
+
+        <!-- Cart Drawer Toggle -->
+        <button class="user-action-btn cart-btn-highlight" id="cartToggleBtn" title="Shopping Cart" onclick="toggleCartDrawer()">
+          <span class="action-icon-circle">
+            🛍️
+            <span class="action-badge cart-count-badge" style="display: none;">0</span>
+          </span>
+          <div class="cart-btn-text">
+            <span class="action-btn-label">Cart</span>
+            <span class="cart-btn-amount header-cart-total">₹0</span>
+          </div>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle mobile navigation" onclick="toggleMobileMenu()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Sub-Navigation Bar -->
+    <nav class="category-subnav" aria-label="Product Categories Navigation">
+      <div class="container category-nav-row">
+        <a href="#home" class="cat-nav-link" data-route="home">🏠 Home</a>
+        <a href="#catalog?category=all" class="cat-nav-link" data-route="catalog">💊 All Medicines</a>
+        <a href="#catalog?category=prescription" class="cat-nav-link" data-category="prescription">
+          <span>Prescription Rx</span>
+          <span class="cat-hot-badge">20% Off</span>
+        </a>
+        <a href="#catalog?category=otc" class="cat-nav-link" data-category="otc">Pain &amp; OTC</a>
+        <a href="#catalog?category=diabetes" class="cat-nav-link" data-category="diabetes">Diabetes Care</a>
+        <a href="#catalog?category=cardiac" class="cat-nav-link" data-category="cardiac">Cardiac &amp; BP</a>
+        <a href="#catalog?category=vitamins" class="cat-nav-link" data-category="vitamins">Vitamins &amp; Immunity</a>
+        <a href="#catalog?category=baby-care" class="cat-nav-link" data-category="baby-care">Mother &amp; Baby</a>
+        <a href="#catalog?category=devices" class="cat-nav-link" data-category="devices">Health Devices</a>
+        <a href="#catalog?category=ayurveda" class="cat-nav-link" data-category="ayurveda">Ayurveda</a>
+        <a href="#catalog?category=personal-care" class="cat-nav-link" data-category="personal-care">Derma Care</a>
+        <div class="cat-nav-divider"></div>
+        <a href="#tools" class="cat-nav-link" data-route="tools">⚖️ BMI &amp; Reminders</a>
+        <a href="#about" class="cat-nav-link" data-route="about">About Us</a>
+        <a href="#contact" class="cat-nav-link" data-route="contact">Contact</a>
+        <a href="#faq" class="cat-nav-link" data-route="faq">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ======================================================================
+       RESPONSIVE MOBILE DRAWER NAVIGATION
+       ====================================================================== -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="toggleMobileMenu()"></div>
+  <aside class="mobile-drawer-menu" id="mobileDrawerMenu">
+    <div class="drawer-top-header">
+      <div class="brand-identity">
+        <div class="brand-crest-wrapper" style="width: 32px; height: 32px;">
+          <img src="assets/icons/logo-crest.svg" alt="Crest" class="brand-crest" />
+        </div>
+        <span class="brand-name" style="font-size: 1.1rem;">SANJEEVANI</span>
+      </div>
+      <button class="modal-close-cross" onclick="toggleMobileMenu()" style="position: static;">&times;</button>
+    </div>
+    <div class="drawer-links-body">
+      <a href="#home" class="drawer-link" onclick="toggleMobileMenu()">🏠 Home</a>
+      <a href="#prescription" class="drawer-link" style="color: var(--color-primary); font-weight: 700;" onclick="toggleMobileMenu()">📄 Upload Doctor's Prescription</a>
+      <a href="#catalog?category=all" class="drawer-link" onclick="toggleMobileMenu()">💊 All Healthcare Products</a>
+      <a href="#catalog?category=prescription" class="drawer-link" onclick="toggleMobileMenu()">🩺 Prescription Rx Medicines</a>
+      <a href="#catalog?category=diabetes" class="drawer-link" onclick="toggleMobileMenu()">🩸 Diabetes Care &amp; Refills</a>
+      <a href="#catalog?category=cardiac" class="drawer-link" onclick="toggleMobileMenu()">❤️ Cardiac &amp; Blood Pressure</a>
+      <a href="#catalog?category=otc" class="drawer-link" onclick="toggleMobileMenu()">🩹 Everyday Pain Relief &amp; OTC</a>
+      <a href="#catalog?category=vitamins" class="drawer-link" onclick="toggleMobileMenu()">✨ Vitamins &amp; Multivitamins</a>
+      <a href="#catalog?category=devices" class="drawer-link" onclick="toggleMobileMenu()">🩺 BP &amp; Sugar Monitors</a>
+      <a href="#catalog?category=baby-care" class="drawer-link" onclick="toggleMobileMenu()">👶 Mother &amp; Baby Care</a>
+      <a href="#catalog?category=ayurveda" class="drawer-link" onclick="toggleMobileMenu()">🌿 100% Herbal &amp; Ayurveda</a>
+      <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 6px 0;" />
+      <a href="#tools" class="drawer-link" onclick="toggleMobileMenu()">⚖️ BMI Calculator &amp; Pill Reminder</a>
+      <a href="#cart" class="drawer-link" onclick="toggleMobileMenu()">🛒 Shopping Cart</a>
+      <a href="#checkout" class="drawer-link" onclick="toggleMobileMenu()">💳 Secure Checkout</a>
+      <a href="#about" class="drawer-link" onclick="toggleMobileMenu()">🏛️ Pharmacy Licenses &amp; Cold-Chain</a>
+      <a href="#contact" class="drawer-link" onclick="toggleMobileMenu()">📞 24/7 Helpline &amp; Locations</a>
+      <a href="#faq" class="drawer-link" onclick="toggleMobileMenu()">❓ Frequently Asked Questions</a>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       MAIN CONTENT ROUTING VIEWS CONTAINER
+       ====================================================================== -->
+  <main id="mainAppView">
+    <!-- Dynamically rendered by router based on URL hash:
+         #home, #catalog, #product/{id}, #prescription, #cart, #checkout, #tools, #about, #contact, #faq
+    -->
+  </main>
+
+  <!-- ======================================================================
+       SLIDE-OVER SHOPPING CART DRAWER (WITH FREE SHIPPING METER)
+       ====================================================================== -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="cartManager.closeDrawer()"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title-wrap">
+        <span style="font-size: 1.4rem;">🛍️</span>
+        <h3>Your Healthcare Cart</h3>
+        <span class="cart-items-counter" id="cartDrawerCount">(0 items)</span>
+      </div>
+      <button class="cart-close-btn" onclick="cartManager.closeDrawer()">&times;</button>
+    </div>
+
+    <!-- Free Delivery Progress Meter Ribbon -->
+    <div id="cartDrawerRibbon"></div>
+
+    <!-- Scrollable Items List -->
+    <div class="cart-items-list" id="cartDrawerItems"></div>
+
+    <!-- Cart Footer & Checkout Action -->
+    <div class="cart-drawer-footer" id="cartDrawerFooter"></div>
+  </aside>
+
+  <!-- ======================================================================
+       QUICK PRESCRIPTION UPLOAD MODAL
+       ====================================================================== -->
+  <div class="modal-overlay-wrap" id="quickRxModal" style="display: none;" role="dialog" aria-modal="true">
+    <div class="modal-dialog-card">
+      <button class="modal-close-cross" onclick="closeRxModal()">&times;</button>
+      <div class="modal-header-icon">📄</div>
+      <h3 class="modal-title">Quick Prescription Upload</h3>
+      <p class="modal-subtitle">Upload doctor's slip. Our registered pharmacist will cross-check and generate your order.</p>
+
+      <form onsubmit="event.preventDefault(); submitQuickRxModal();">
+        <div class="rx-upload-dropzone-mini" onclick="document.getElementById('modalRxFileInput').click()">
+          <input type="file" id="modalRxFileInput" accept="image/*,.pdf" style="display: none;" onchange="handleQuickModalFile(event)" />
+          <div class="upload-icon-circle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00897B" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <span class="upload-main-text">Click to choose image or PDF</span>
+          <span class="upload-sub-text">Max file size 15MB</span>
+        </div>
+
+        <div id="modalRxPreview" class="rx-preview-box" style="display: none; margin-bottom: 16px;">
+          <span class="thumb-icon">📄</span>
+          <div class="preview-meta">
+            <strong id="modalRxFileName">prescription.jpg</strong>
+            <span class="preview-status">✓ File attached ready to submit</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Patient Full Name *</label>
+          <input type="text" id="modalPatientName" class="form-control" placeholder="e.g. Srikant Iyer" required />
+        </div>
+
+        <div class="form-group">
+          <label>Contact Mobile Number *</label>
+          <input type="tel" id="modalPatientPhone" class="form-control" placeholder="e.g. 9845012345" maxlength="10" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 18px;">
+          <span>Submit for Verification</span>
+          <span class="arrow-right">&rarr;</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       PATIENT ACCOUNT & LOGIN MODAL
+       ====================================================================== -->
+  <div class="modal-overlay-wrap" id="loginModal" style="display: none;" role="dialog" aria-modal="true">
+    <div class="modal-dialog-card">
+      <button class="modal-close-cross" onclick="closeLoginModal()">&times;</button>
+      <div class="modal-header-icon">👤</div>
+      <h3 class="modal-title">Patient Portal Sign In</h3>
+      <p class="modal-subtitle">Access your digital prescriptions, monthly auto-refills, and health records.</p>
+
+      <form onsubmit="event.preventDefault(); handleLoginSubmit();">
+        <div class="form-group">
+          <label>Registered Mobile Number or Email *</label>
+          <input type="text" id="loginEmailOrPhone" class="form-control" placeholder="e.g. 9845012345 or patient@gmail.com" required />
+        </div>
+        <div class="form-group">
+          <label>Password or OTP *</label>
+          <input type="password" class="form-control" placeholder="Enter password or 6-digit OTP" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 14px;">Sign In</button>
+        <p style="text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 16px;">
+          New patient? <a href="#home" onclick="closeLoginModal(); openRxModal();" style="color: var(--color-primary); font-weight: 700;">Upload Prescription to Auto-Register</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       GLOBAL TOAST NOTIFICATION CONTAINER
+       ====================================================================== -->
+  <div id="globalToast" class="global-toast" role="status" aria-live="polite">
+    Item updated successfully
+  </div>
+
+  <!-- ======================================================================
+       DESKTOP & LAPTOP GLOBAL FOOTER
+       ====================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand & Licenses -->
+        <div class="footer-brand-col">
+          <div class="footer-logo">
+            <img src="assets/icons/logo-crest.svg" alt="Sanjeevani Logo" />
+            <span class="footer-logo-title">SANJEEVANI PHARMACY</span>
+          </div>
+          <p class="footer-desc">
+            India's certified digital health network. Sourcing 100% genuine pharmaceutical formulations directly from licensed manufacturers. Governed by the Drugs and Cosmetics Act with full cold-chain discipline.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-circle-link" aria-label="Twitter">𝕏</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-circle-link" aria-label="Instagram">IG</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-circle-link" aria-label="Facebook">FB</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-circle-link" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Categories -->
+        <div>
+          <h4 class="footer-col-title">Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="#catalog?category=prescription">Prescription Rx</a></li>
+            <li><a href="#catalog?category=diabetes">Diabetes Refills</a></li>
+            <li><a href="#catalog?category=cardiac">Cardiac &amp; Blood Pressure</a></li>
+            <li><a href="#catalog?category=otc">Pain Relief &amp; OTC</a></li>
+            <li><a href="#catalog?category=vitamins">Vitamins &amp; Zinc</a></li>
+            <li><a href="#catalog?category=devices">BP &amp; Sugar Monitors</a></li>
+            <li><a href="#catalog?category=baby-care">Baby Care &amp; Nutrition</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Patient Care -->
+        <div>
+          <h4 class="footer-col-title">Patient Care</h4>
+          <ul class="footer-links-list">
+            <li><a href="#prescription">Upload Prescription</a></li>
+            <li><a href="#cart">Shopping Cart</a></li>
+            <li><a href="#checkout">Secure Checkout</a></li>
+            <li><a href="#tools">Free BMI Calculator</a></li>
+            <li><a href="#tools">Daily Pill Reminder</a></li>
+            <li><a href="#faq">Delivery &amp; Tracking</a></li>
+            <li><a href="#faq">Cold Chain Storage FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Corporate & Compliance -->
+        <div>
+          <h4 class="footer-col-title">Compliance</h4>
+          <ul class="footer-links-list">
+            <li><a href="#about">Drug License Form 20B/21B</a></li>
+            <li><a href="#about">WHO-GMP Quality Policy</a></li>
+            <li><a href="#about">Clinical Pharmacist Team</a></li>
+            <li><a href="#contact">Central Hub Locations</a></li>
+            <li><a href="#contact">Hospital &amp; Bulk Supply</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: 24/7 Helpline -->
+        <div>
+          <h4 class="footer-col-title">24/7 Helpline</h4>
+          <p style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 14px;">
+            Speak directly with a registered clinical pharmacist for dosage advice or emergency dispatch.
+          </p>
+          <div style="font-size: 0.9rem; color: #E2E8F0; line-height: 1.8;">
+            📞 <strong>Toll-Free:</strong> <a href="tel:18002669922" style="color: #5EEAD4;">1800-266-9922</a><br />
+            💬 <strong>WhatsApp:</strong> <a href="https://wa.me/919845099220" style="color: #5EEAD4;">+91 98450 99220</a><br />
+            ✉️ <strong>Email:</strong> <a href="mailto:support@sanjeevani.in" style="color: #5EEAD4;">support@sanjeevani.in</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Sanjeevani Healthcare Limited. Licensed under Drugs &amp; Cosmetics Rules. All rights reserved.</span>
+        <div class="footer-legal-links">
+          <a href="#faq">Privacy Policy</a>
+          <a href="#faq">Terms of Service</a>
+          <a href="#faq">Prescription Policy</a>
+          <a href="#about">Return &amp; Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       RESPONSIVE MOBILE BOTTOM NAVIGATION BAR (TOUCH OPTIMIZED)
+       ====================================================================== -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="#home" class="bottom-nav-item active" data-route="home">
+      <span class="bottom-nav-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="#catalog?category=all" class="bottom-nav-item" data-route="catalog">
+      <span class="bottom-nav-icon">💊</span>
+      <span>Medicines</span>
+    </a>
+    <a href="#prescription" class="bottom-nav-item bottom-rx-fab" title="Upload Doctor Prescription">
+      <span class="bottom-nav-icon">📄</span>
+    </a>
+    <a href="#tools" class="bottom-nav-item" data-route="tools">
+      <span class="bottom-nav-icon">⚖️</span>
+      <span>Tools</span>
+    </a>
+    <a href="javascript:void(0)" class="bottom-nav-item" onclick="toggleCartDrawer()">
+      <span class="bottom-nav-icon">
+        🛒
+        <span class="action-badge cart-count-badge" style="display: none;">0</span>
+      </span>
+      <span>Cart</span>
+    </a>
+  </nav>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
